@@ -3,8 +3,6 @@ const inputSearch = document.querySelector('[data-search]')
 import 'regenerator-runtime/runtime'
 const moviesList = document.querySelector('[data-movies-list]')
 const apiKey = 'a60c16eaddacf852ba0fc28403a21c8b'
-const IMGPATH = ''
-
 const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
 
 showMovies(apiUrl)

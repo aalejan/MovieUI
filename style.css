@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+}
+
+header{
+    background-color: #e51937;
+    min-height: 10vh;
+}
+
+#main-movies{
+
+}
+
+.moviesList {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+
+img{
+    height: 90%;
+    width: 95%;
+}
+
+h2{
+    width: 90%;
+    text-align: center;
+    font-size: 3rem;
+}
