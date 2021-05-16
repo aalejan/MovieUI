@@ -3,6 +3,7 @@ const inputSearch = document.querySelector('[data-search]')
 import 'regenerator-runtime/runtime'
 const moviesList = document.querySelector('[data-movies-list]')
 const apiKey = 'a60c16eaddacf852ba0fc28403a21c8b'
+const IMGPATH = ''
 
 const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
 
@@ -18,9 +19,13 @@ function showMovies(url){
             const movieTitle = document.createElement('h2')
             const moviePoster = document.createElement('img')
 
-            movieTitle.innerText= result.title
-           
+            moviePoster.src = `https://image.tmdb.org/t/p/w500/${result.poster_path}`
+            movieTitle.innerText= `${result.title}`
             
+
+           movieEl.appendChild(movieTitle)
+           movieEl.appendChild(moviePoster)
+            moviesList.appendChild(movieEl)
         })
     }
     fetchData()
