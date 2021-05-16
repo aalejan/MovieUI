@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime'
 const moviesList = document.querySelector('[data-movies-list]')
 const apiKey = 'a60c16eaddacf852ba0fc28403a21c8b'
 const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
+const searchAPIUrl =` https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`
 
 showMovies(apiUrl)
 function showMovies(url){
@@ -29,3 +30,16 @@ function showMovies(url){
     fetchData()
     
 }
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const search = inputSearch.value
+    moviesList.innerHTML = ''
+
+    if(search){
+        showMovies(searchAPIUrl + search )
+    }
+    
+    search.value = ''
+    
+})
