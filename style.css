@@ -20,12 +20,18 @@ header{
    
 }
 
-header h2{
+header a{
     flex: 1 1;
-    font-size: 4rem;
     display: flex;
     align-items: center;
     justify-content:center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+header a h2{
+    font-size: 4rem;
 }
 
 
