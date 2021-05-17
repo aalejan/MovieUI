@@ -35,13 +35,15 @@ function showMovies(url){
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     const search = inputSearch.value
-    moviesList.innerHTML = ''
+   
 
     if(search){
+        moviesList.innerHTML = ''
         showMovies(searchAPIUrl + search )
+        inputSearch.value = ''
     }
     
-    search.value = ''
+  
     
 })
 
