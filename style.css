@@ -16,11 +16,45 @@ body{
 header{
     background-color: #e51937;
     min-height: 10vh;
+    display: flex;
+   
 }
 
-#main-movies{
-
+header h2{
+    flex: 1 1;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content:center;
 }
+
+
+header form {
+    display: flex;
+    align-items: center;
+    flex: 1 1;
+    padding: 1rem 0rem;
+}
+
+form input{
+    padding-left: .2rem;
+    height: 60%;
+    width: 50%;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+}
+
+form button{
+    border: none;
+    font-size: 1.2rem;
+    padding: .5em .5em;
+    margin-left: 1rem;
+    border-radius: .75rem;
+    width: 10%;
+}
+
 
 .moviesList {
     padding-top: 3rem;
