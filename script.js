@@ -6,6 +6,7 @@ const moviesList = document.querySelector('[data-movies-list]')
 const apiKey = 'a60c16eaddacf852ba0fc28403a21c8b'
 const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
 const searchAPIUrl =` https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`
+let movies = []
 
 showMovies(apiUrl)
 function showMovies(url){
@@ -13,7 +14,9 @@ function showMovies(url){
         const response = await fetch(url)
         const data = await response.json()
         const results = data.results
-        console.log(results)
+        movies = [...results]
+        
+        console.log(movies)
         results.forEach(result => {
             const movieEl = document.createElement('div')
             const movieTitle = document.createElement('h2')
@@ -31,6 +34,8 @@ function showMovies(url){
     fetchData()
     
 }
+
+
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -51,3 +56,4 @@ homeLink.addEventListener('click', () => {
     showMovies(apiUrl)
     moviesList.innerHTML = ''
 })
+
