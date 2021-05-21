@@ -61,8 +61,13 @@ homeLink.addEventListener('click', () => {
 
 
 function sortByRelease(){
-    const sortedActivities = movies.sort((a, b) => b.release_date - a.release_date)
+    const sortedActivities = movies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
     
+    moviesList.innerHTML = ''
+    sortedActivities.forEach(activity => {
+        renderMovie(activity)
+    })
+    console.log(sortedActivities)
 }
 
 releaseDateFilter.addEventListener('click', () => {
