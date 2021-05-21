@@ -6,7 +6,21 @@ const moviesList = document.querySelector('[data-movies-list]')
 const apiKey = 'a60c16eaddacf852ba0fc28403a21c8b'
 const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
 const searchAPIUrl =` https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`
+const dropdownContent = document.querySelector('[data-dropdown-content]')
 let movies = []
+const filterBy = ['Release Date']
+
+filterBy.forEach(item => {
+    renderItem(item)
+})
+
+function renderItem(item){
+    const dropdownItem = document.createElement('a')
+
+    dropdownItem.innerText = item
+
+    dropdownContent.appendChild(dropdownItem)
+}
 
 showMovies(apiUrl)
 function showMovies(url){
@@ -15,8 +29,7 @@ function showMovies(url){
         const data = await response.json()
         const results = data.results
         movies = [...results]
-        
-        console.log(movies)
+        sortByRelease()
         results.forEach(result => {
             const movieEl = document.createElement('div')
             const movieTitle = document.createElement('h2')
@@ -36,6 +49,12 @@ function showMovies(url){
 }
 
 
+function sortByRelease(){
+    const sortedActivities = movies.sort((a, b) => b.release_date - a.release_date)
+    console.log(sortedActivities)
+}
+
+
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -48,6 +67,7 @@ form.addEventListener('submit', (e) => {
         inputSearch.value = ''
     }
     
+    sortByRelease()
   
     
 })
@@ -56,4 +76,5 @@ homeLink.addEventListener('click', () => {
     showMovies(apiUrl)
     moviesList.innerHTML = ''
 })
+
 
