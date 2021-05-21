@@ -6,21 +6,10 @@ const moviesList = document.querySelector('[data-movies-list]')
 const apiKey = 'a60c16eaddacf852ba0fc28403a21c8b'
 const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
 const searchAPIUrl =` https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`
-const dropdownContent = document.querySelector('[data-dropdown-content]')
+const releaseDateFilter = document.querySelector('[data-release-date]')
 let movies = []
-const filterBy = ['Release Date']
 
-filterBy.forEach(item => {
-    renderItem(item)
-})
 
-function renderItem(item){
-    const dropdownItem = document.createElement('a')
-
-    dropdownItem.innerText = item
-
-    dropdownContent.appendChild(dropdownItem)
-}
 
 showMovies(apiUrl)
 function showMovies(url){
@@ -29,31 +18,27 @@ function showMovies(url){
         const data = await response.json()
         const results = data.results
         movies = [...results]
-        sortByRelease()
         results.forEach(result => {
-            const movieEl = document.createElement('div')
-            const movieTitle = document.createElement('h2')
-            const moviePoster = document.createElement('img')
-
-            moviePoster.src = `https://image.tmdb.org/t/p/w500/${result.poster_path}`
-            movieTitle.innerText= `${result.title}`
-            
-
-           movieEl.appendChild(movieTitle)
-           movieEl.appendChild(moviePoster)
-            moviesList.appendChild(movieEl)
+           renderMovie(result)
         })
     }
     fetchData()
     
 }
 
+function renderMovie(item){
+    const movieEl = document.createElement('div')
+    const movieTitle = document.createElement('h2')
+    const moviePoster = document.createElement('img')
 
-function sortByRelease(){
-    const sortedActivities = movies.sort((a, b) => b.release_date - a.release_date)
-    console.log(sortedActivities)
+    moviePoster.src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+    movieTitle.innerText= `${item.title}`
+    
+
+   movieEl.appendChild(movieTitle)
+   movieEl.appendChild(moviePoster)
+    moviesList.appendChild(movieEl)
 }
-
 
 
 form.addEventListener('submit', (e) => {
@@ -67,9 +52,6 @@ form.addEventListener('submit', (e) => {
         inputSearch.value = ''
     }
     
-    sortByRelease()
-  
-    
 })
 
 homeLink.addEventListener('click', () => {
@@ -78,3 +60,13 @@ homeLink.addEventListener('click', () => {
 })
 
 
+function sortByRelease(){
+    const sortedActivities = movies.sort((a, b) => b.release_date - a.release_date)
+    
+}
+
+releaseDateFilter.addEventListener('click', () => {
+
+    sortByRelease()
+
+})
