@@ -6,7 +6,11 @@ const moviesList = document.querySelector('[data-movies-list]')
 const apiKey = 'a60c16eaddacf852ba0fc28403a21c8b'
 const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
 const searchAPIUrl =` https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`
+const trendingAPIURL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`
+const nowPlayingURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`
 const releaseDateFilter = document.querySelector('[data-release-date]')
+const trendingMoviesFilter = document.querySelector('[data-trending]') 
+const nowPlayingFilter = document.querySelector('[data-now_playing]')
 let movies = []
 
 
@@ -71,7 +75,15 @@ function sortByRelease(){
 }
 
 releaseDateFilter.addEventListener('click', () => {
-
     sortByRelease()
+})
 
+trendingMoviesFilter.addEventListener('click', () => {
+    moviesList.innerHTML = ''
+    showMovies(trendingAPIURL)
+})
+
+nowPlayingFilter.addEventListener('click', () => {
+    moviesList.innerHTML = ''
+    showMovies(nowPlayingURL)
 })
