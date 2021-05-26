@@ -90,15 +90,56 @@ h2{
     padding-bottom: 1rem;
 }
 
-/*DropdownContainer*/
-.dropdownContainer{
+.menuContainer{
+    width: 90%;
+    margin: auto; 
+    display: flex;
     padding-top: 3rem;
-   width: 90%;
-margin: auto; 
-border-bottom: 2px solid hsla(0,0%,100%,.4);
+    border-bottom: 2px solid hsla(0,0%,100%,.4);
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*DropdownContainer*/
+
+.optionsContainer{
+    flex: 1 1;
+}
+
+.optionsContainer .options{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
 }
 
 
+.optionsContainer .options li{
+    font-size: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+}
+
+.optionsContainer .options li:after{
+    content:'';
+        position:absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background:currentColor;
+        transform: scaleX(0);
+        transform-origin:right;
+        transition: transform 350ms ease-in-out;
+}
+
+.optionsContainer .options li:hover::after{
+    transform: scaleX(1);
+}
+
+.dropdownContainer{
+    flex: 1 1;
+}
 /* Dropdown Button */
 .dropbtn {
     background-color:black;
