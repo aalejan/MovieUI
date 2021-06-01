@@ -13,6 +13,8 @@ body{
     color: white;
 }
 
+
+
 header{
     background-color: #e51937;
     min-height: 10vh;
@@ -110,6 +112,7 @@ h2{
     display: flex;
     justify-content: space-evenly;
     list-style: none;
+    
 }
 
 
@@ -118,6 +121,7 @@ h2{
     font-weight: 600;
     cursor: pointer;
     position: relative;
+   
 }
 
 .optionsContainer .options li:after{
@@ -132,6 +136,7 @@ h2{
         transform-origin:right;
         transition: transform 350ms ease-in-out;
 }
+
 
 .optionsContainer .options li:hover::after{
     transform: scaleX(1);
