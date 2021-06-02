@@ -1,5 +1,6 @@
 import 'regenerator-runtime/runtime'
 import {dateFormatter} from './utils/dateFormatter'
+import {formatRuntime} from './utils/runtimeFormatter'
 const form = document.querySelector('[data-form]')
 const inputSearch = document.querySelector('[data-search]') 
 const homeLink = document.querySelector('[data-home]')
@@ -57,7 +58,7 @@ function renderMovie(item){
 
     movieDescription.innerText = `${item.overview}`
     movieReleaseDate.innerText = `Released ${dateFormatter(movieRelease)}`
-    movieRuntime.innerText = `${item.runtime}`
+    movieRuntime.innerText = formatRuntime(`${item.runtime}`)
     moviePoster.src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
     movieTitle.innerText= `${item.title}`
     
