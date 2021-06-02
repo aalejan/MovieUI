@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime'
 const form = document.querySelector('[data-form]')
 const inputSearch = document.querySelector('[data-search]') 
 const homeLink = document.querySelector('[data-home]')
@@ -43,16 +44,29 @@ function renderMovie(item){
     const movieEl = document.createElement('div')
     const movieTitle = document.createElement('h2')
     const moviePoster = document.createElement('img')
-    
+    const imgOverlay = document.createElement('div')
+    imgOverlay.classList.add('overlay')
+    const movieDescription = document.createElement('p')
+    movieDescription.classList.add('description')
+    const movieReleaseDate = document.createElement('p')
+    const movieRuntime = document.createElement('p')
+    const movieRelease = new Date(`${item.release_date}`)
+    const options = { year: 'numeric',month: 'short', day: 'numeric'}
 
 
+    movieDescription.innerText = `${item.overview}`
+    movieReleaseDate.innerText = `Released ${movieRelease.toLocaleDateString('en-US',options)}`
+    movieRuntime.innerText = `${item.runtime}`
     moviePoster.src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
     movieTitle.innerText= `${item.title}`
     
+    imgOverlay.appendChild(movieTitle)
+   imgOverlay.appendChild(movieDescription)
+   imgOverlay.appendChild(movieReleaseDate)
+   imgOverlay.appendChild(movieRuntime)
 
-   
-   movieEl.appendChild(moviePoster)
-   movieEl.appendChild(movieTitle)
+    movieEl.appendChild(moviePoster)
+    movieEl.appendChild(imgOverlay)
     moviesList.appendChild(movieEl)
     
 }
