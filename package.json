@@ -21,5 +21,8 @@
   "homepage": "https://github.com/aalejan/MovieUI#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "utils": "^0.3.1"
   }
 }
