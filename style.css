@@ -46,7 +46,7 @@ header form {
 
 form input{
     padding-left: .2rem;
-    height: 60%;
+    height: 40%;
     width: 50%;
     border: none;
     outline: none;
@@ -66,7 +66,7 @@ form button{
 
 
 .moviesList {
-    padding-top: 3rem;
+    
     width: 90%;
     margin: auto;
     display: flex;
@@ -77,13 +77,14 @@ form button{
 }
 
 .moviesList div{
-    padding-bottom: 4rem;
+    margin-bottom: 4rem;
     position: relative;
     width: 40%;
     height: 100%;
 }
 
 .moviesList div img{
+    height: 100%;
     display: block;
     width: 100%;
 }
@@ -98,8 +99,9 @@ form button{
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 30%;
     align-items: center;
+    overflow:auto;
     opacity: 0;
     transition: opacity 0.25s;
  }
@@ -142,6 +144,7 @@ h2{
     border-bottom: 2px solid hsla(0,0%,100%,.4);
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 3rem;
 }
 
 /*DropdownContainer*/
