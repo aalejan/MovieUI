@@ -9,7 +9,7 @@ const apiKey = 'a60c16eaddacf852ba0fc28403a21c8b'
 const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
 const searchAPIUrl =` https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`
 const trendingAPIURL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`
-const nowPlayingURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`
+const nowPlayingURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=US`
 const comingSoonURL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1&region=US`
 const releaseDateFilter = document.querySelector('[data-release-date]')
 const trendingMoviesFilter = document.querySelector('[data-trending]') 
