@@ -64,6 +64,124 @@ form button{
     cursor: pointer;
 }
 
+.menuContainer{
+    width: 90%;
+    margin: auto; 
+    display: flex;
+    padding-top: 3rem;
+    border-bottom: 2px solid hsla(0,0%,100%,.4);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+/*DropdownContainer*/
+
+.optionsContainer{
+    flex: 1 1;
+}
+
+.optionsContainer .options{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    
+}
+
+
+.optionsContainer .options li{
+    font-size: 2.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+   
+}
+
+.optionsContainer .options li a{
+    font-size: 2.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    color:white;
+    text-decoration: none;
+}
+
+.optionsContainer .options li a:after{
+    content:'';
+        position:absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background:currentColor;
+        transform: scaleX(0);
+        transform-origin:right;
+        transition: transform 350ms ease-in-out;
+}
+
+.optionsContainer .options li:after{
+    content:'';
+        position:absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background:currentColor;
+        transform: scaleX(0);
+        transform-origin:right;
+        transition: transform 350ms ease-in-out;
+}
+
+
+.optionsContainer .options li:hover::after{
+    transform: scaleX(1);
+}
+
+.dropdownContainer{
+    flex: .5 .5;
+}
+/* Dropdown Button */
+.dropbtn {
+    background-color:black;
+    color: white;
+    font-size: 3rem;
+    border: none;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-size: 2rem;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {background-color: #646464;}
 
 .moviesList {
     
@@ -136,99 +254,8 @@ h2{
     font-size: 3rem;
 }
 
-.menuContainer{
-    width: 90%;
-    margin: auto; 
-    display: flex;
-    padding-top: 3rem;
-    border-bottom: 2px solid hsla(0,0%,100%,.4);
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
+@media (max-width: 767px){
+    .optionsContainer .options li{
+        font-size: 1.5rem
+    }
 }
-
-/*DropdownContainer*/
-
-.optionsContainer{
-    flex: 1 1;
-}
-
-.optionsContainer .options{
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
-    
-}
-
-
-.optionsContainer .options li{
-    font-size: 2rem;
-    font-weight: 600;
-    cursor: pointer;
-    position: relative;
-   
-}
-
-.optionsContainer .options li:after{
-    content:'';
-        position:absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 2px;
-        background:currentColor;
-        transform: scaleX(0);
-        transform-origin:right;
-        transition: transform 350ms ease-in-out;
-}
-
-
-.optionsContainer .options li:hover::after{
-    transform: scaleX(1);
-}
-
-.dropdownContainer{
-    flex: 1 1;
-}
-/* Dropdown Button */
-.dropbtn {
-    background-color:black;
-    color: white;
-    font-size: 3rem;
-    border: none;
-  }
-  
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    font-size: 2rem;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content div {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    cursor: pointer;
-  }
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #ddd;}
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {display: block;}
-  
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {background-color: #646464;}
