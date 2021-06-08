@@ -1,6 +1,7 @@
 import 'regenerator-runtime/runtime'
 import {dateFormatter} from './utils/dateFormatter'
 import {formatRuntime} from './utils/runtimeFormatter'
+import {addToWatchList} from './watchList'
 const form = document.querySelector('[data-form]')
 const inputSearch = document.querySelector('[data-search]') 
 const homeLink = document.querySelector('[data-home]')
@@ -15,6 +16,7 @@ const releaseDateFilter = document.querySelector('[data-release-date]')
 const trendingMoviesFilter = document.querySelector('[data-trending]') 
 const nowPlayingFilter = document.querySelector('[data-now_playing]')
 const comingSoonFilter = document.querySelector('[data-coming-soon]')
+const watchListOption = document.querySelector('[data-watchlist]')
 
 let movies = []
 showMovies(apiUrl)
@@ -43,6 +45,8 @@ function showMovies(url){
     
     
 function renderMovie(item){
+    const addToListBtn = document.createElement('button')
+    addToListBtn.classList.add('addButton')
     const movieEl = document.createElement('div')
     const movieTitle = document.createElement('h2')
     const moviePoster = document.createElement('img')
@@ -61,6 +65,7 @@ function renderMovie(item){
     movieRuntime.innerText = formatRuntime(`${item.runtime}`)
     moviePoster.src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
     movieTitle.innerText= `${item.title}`
+    addToListBtn.innerText = 'Add to Watchlist'
     
     imgOverlay.appendChild(movieTitle)
    imgOverlay.appendChild(movieDescription)
@@ -69,6 +74,7 @@ function renderMovie(item){
 
     movieEl.appendChild(moviePoster)
     movieEl.appendChild(imgOverlay)
+    movieEl.appendChild(addToListBtn)
     moviesList.appendChild(movieEl)
     
 }
@@ -87,8 +93,9 @@ form.addEventListener('submit', (e) => {
 })
 
 homeLink.addEventListener('click', () => {
-    showMovies(apiUrl)
     moviesList.innerHTML = ''
+    showMovies(apiUrl)
+    
 })
 
 
@@ -119,4 +126,9 @@ nowPlayingFilter.addEventListener('click', () => {
 comingSoonFilter.addEventListener('click', () => {
     moviesList.innerHTML = ''
     showMovies(comingSoonURL)
+})
+
+watchListOption.addEventListener('click', () => {
+    moviesList.innerHTML = ''
+
 })

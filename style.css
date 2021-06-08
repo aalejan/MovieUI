@@ -117,6 +117,7 @@ form button{
         transform: scaleX(0);
         transform-origin:right;
         transition: transform 350ms ease-in-out;
+        
 }
 
 .optionsContainer .options li:after{
