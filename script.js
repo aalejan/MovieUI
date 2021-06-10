@@ -1,7 +1,6 @@
 import 'regenerator-runtime/runtime'
 import {dateFormatter} from './utils/dateFormatter'
 import {formatRuntime} from './utils/runtimeFormatter'
-import {addToWatchList} from './watchList'
 const form = document.querySelector('[data-form]')
 const inputSearch = document.querySelector('[data-search]') 
 const homeLink = document.querySelector('[data-home]')
@@ -18,7 +17,8 @@ const nowPlayingFilter = document.querySelector('[data-now_playing]')
 const comingSoonFilter = document.querySelector('[data-coming-soon]')
 const watchListOption = document.querySelector('[data-watchlist]')
 
-let movies = []
+ let movies = []
+let watchlist = []
 showMovies(apiUrl)
 
 function showMovies(url){
@@ -46,8 +46,11 @@ function showMovies(url){
     
 function renderMovie(item){
     const addToListBtn = document.createElement('button')
+    addToListBtn.setAttribute('data-add-watchlist', '')
     addToListBtn.classList.add('addButton')
     const movieEl = document.createElement('div')
+    movieEl.setAttribute('data-movie', '')
+    movieEl.dataset.movieId = item.id
     const movieTitle = document.createElement('h2')
     const moviePoster = document.createElement('img')
     const imgOverlay = document.createElement('div')
@@ -71,12 +74,35 @@ function renderMovie(item){
    imgOverlay.appendChild(movieDescription)
    imgOverlay.appendChild(movieReleaseDate)
    imgOverlay.appendChild(movieRuntime)
+    imgOverlay.appendChild(addToListBtn)
 
     movieEl.appendChild(moviePoster)
     movieEl.appendChild(imgOverlay)
-    movieEl.appendChild(addToListBtn)
     moviesList.appendChild(movieEl)
     
+}
+
+document.addEventListener('click', e => {
+    if(e.target.matches('[data-add-watchlist]')){
+        const id = e.target.closest('[data-movie]')
+            .dataset.movieId
+            
+            addToWatchList(parseInt(id))
+
+    }
+})
+
+
+
+function addToWatchList(id){
+    
+    const existingItem = watchlist.find(entry => entry === id )
+    if(!existingItem){
+        watchlist.push(id)
+    }else{
+        return
+    }
+    console.log(watchlist)
 }
 
 form.addEventListener('submit', (e) => {
@@ -131,4 +157,13 @@ comingSoonFilter.addEventListener('click', () => {
 watchListOption.addEventListener('click', () => {
     moviesList.innerHTML = ''
 
+    
+        watchlist.map(async(result) => {
+            const response = await fetch(`https://api.themoviedb.org/3/movie/${result}?api_key=${apiKey}&language=en-US`)
+            const data = await response.json()
+          renderMovie(data)
+          
+        })   
 })
+
+

@@ -255,6 +255,12 @@ h2{
     font-size: 3rem;
 }
 
+ .overlay button{
+     margin-top: 1.5rem;
+    cursor: pointer;
+    padding: .5rem .75rem;
+}
+
 @media (max-width: 767px){
     .optionsContainer .options li{
         font-size: 1.5rem
