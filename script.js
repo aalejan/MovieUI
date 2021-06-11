@@ -19,6 +19,7 @@ const watchListOption = document.querySelector('[data-watchlist]')
 
  let movies = []
 let watchlist = []
+let watchlistInfo = []
 showMovies(apiUrl)
 
 function showMovies(url){
@@ -48,6 +49,9 @@ function renderMovie(item){
     const addToListBtn = document.createElement('button')
     addToListBtn.setAttribute('data-add-watchlist', '')
     addToListBtn.classList.add('addButton')
+    const removeListBtn = document.createElement('button')
+    removeListBtn.setAttribute('data-remove-watchlist', '')
+    removeListBtn.classList.add('removeBtn')
     const movieEl = document.createElement('div')
     movieEl.setAttribute('data-movie', '')
     movieEl.dataset.movieId = item.id
@@ -61,6 +65,9 @@ function renderMovie(item){
     const movieRuntime = document.createElement('p')
     const movieRelease = new Date(`${item.release_date}`)
     
+    
+        imgOverlay.appendChild(removeListBtn)
+    
 
 
     movieDescription.innerText = `${item.overview}`
@@ -69,6 +76,7 @@ function renderMovie(item){
     moviePoster.src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
     movieTitle.innerText= `${item.title}`
     addToListBtn.innerText = 'Add to Watchlist'
+    removeListBtn.innerText = 'Remove from Watchlist'
     
     imgOverlay.appendChild(movieTitle)
    imgOverlay.appendChild(movieDescription)
@@ -93,6 +101,17 @@ document.addEventListener('click', e => {
 })
 
 
+document.addEventListener('click', e => {
+    if(e.target.matches('[data-remove-watchlist]')){
+        const id = e.target.closest('[data-movie]')
+            .dataset.movieId
+            
+            removeFromWatchlist(parseInt(id))
+           
+    }
+    
+})
+
 
 function addToWatchList(id){
     
@@ -102,6 +121,14 @@ function addToWatchList(id){
     }else{
         return
     }
+    console.log(watchlist)
+}
+
+function removeFromWatchlist(id){
+    const existingItem = watchlist.find(entry => entry === id )
+    if(existingItem == null) return
+    watchlist = watchlist.filter(entry => entry != id)
+
     console.log(watchlist)
 }
 
@@ -157,13 +184,18 @@ comingSoonFilter.addEventListener('click', () => {
 watchListOption.addEventListener('click', () => {
     moviesList.innerHTML = ''
 
-    
-        watchlist.map(async(result) => {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${result}?api_key=${apiKey}&language=en-US`)
-            const data = await response.json()
-          renderMovie(data)
-          
-        })   
+       renderWatchlist()
 })
+
+function renderWatchlist(){
+   
+    watchlist.map(async(result) => {
+     const response = await fetch(`https://api.themoviedb.org/3/movie/${result}?api_key=${apiKey}&language=en-US`)
+     const data = await response.json()
+   
+   renderMovie(data)
+   console.log()
+ })  
+}  
 
 
