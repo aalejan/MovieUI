@@ -19,7 +19,7 @@ const watchListOption = document.querySelector('[data-watchlist]')
 
  let movies = []
 let watchlist = []
-let watchlistInfo = []
+
 showMovies(apiUrl)
 
 function showMovies(url){
@@ -65,8 +65,8 @@ function renderMovie(item){
     const movieRuntime = document.createElement('p')
     const movieRelease = new Date(`${item.release_date}`)
     
-    
-        imgOverlay.appendChild(removeListBtn)
+   
+        
     
 
 
@@ -83,6 +83,9 @@ function renderMovie(item){
    imgOverlay.appendChild(movieReleaseDate)
    imgOverlay.appendChild(movieRuntime)
     imgOverlay.appendChild(addToListBtn)
+    if(watchlist.includes(item.id)){
+        imgOverlay.appendChild(removeListBtn)
+    }
 
     movieEl.appendChild(moviePoster)
     movieEl.appendChild(imgOverlay)
