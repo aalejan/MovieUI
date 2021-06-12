@@ -187,6 +187,7 @@ comingSoonFilter.addEventListener('click', () => {
 watchListOption.addEventListener('click', () => {
     moviesList.innerHTML = ''
 
+    
        renderWatchlist()
 })
 

@@ -259,6 +259,14 @@ h2{
      margin-top: 1.5rem;
     cursor: pointer;
     padding: .5rem .75rem;
+    background: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.overlay button:hover{
+    background: #e51937;
+    transition: 350ms ease-in;
 }
 
 @media (max-width: 767px){
