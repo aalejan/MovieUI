@@ -198,6 +198,7 @@ form button{
     position: relative;
     width: 30%;
     height: 100%;
+    cursor: pointer;
 }
 
 .moviesList div img{
@@ -270,5 +271,25 @@ h2{
 @media (max-width: 767px){
     .optionsContainer .options li{
         font-size: 1.5rem
+    }
+}
+
+@media (max-width: 420px) {
+    .optionsContainer .options li{
+        font-size: 1.2rem
+    }
+
+    .overlay .description{
+        font-size: .8rem;
+       
+    }
+    
+    .overlay p{
+   
+    font-size: .8rem;
+    }
+
+    .overlay h2{
+        font-size:1.75rem;
     }
 }
