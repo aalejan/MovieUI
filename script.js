@@ -45,7 +45,7 @@ function showMovies(url){
     }
     
     
-function renderMovie(item){
+function renderMovie({release_date, overview, runtime, poster_path, title, id}){
     const addToListBtn = document.createElement('button')
     addToListBtn.setAttribute('data-add-watchlist', '')
     addToListBtn.classList.add('addButton')
@@ -54,7 +54,7 @@ function renderMovie(item){
     removeListBtn.classList.add('removeBtn')
     const movieEl = document.createElement('div')
     movieEl.setAttribute('data-movie', '')
-    movieEl.dataset.movieId = item.id
+    movieEl.dataset.movieId = id
     const movieTitle = document.createElement('h2')
     const moviePoster = document.createElement('img')
     const imgOverlay = document.createElement('div')
@@ -63,18 +63,18 @@ function renderMovie(item){
     movieDescription.classList.add('description')
     const movieReleaseDate = document.createElement('p')
     const movieRuntime = document.createElement('p')
-    const movieRelease = new Date(`${item.release_date}`)
+    const movieRelease = new Date(`${release_date}`)
     
    
         
     
 
 
-    movieDescription.innerText = `${item.overview}`
+    movieDescription.innerText = `${overview}`
     movieReleaseDate.innerText = `Released ${dateFormatter(movieRelease)}`
-    movieRuntime.innerText = formatRuntime(`${item.runtime}`)
-    moviePoster.src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
-    movieTitle.innerText= `${item.title}`
+    movieRuntime.innerText = formatRuntime(`${runtime}`)
+    moviePoster.src = `https://image.tmdb.org/t/p/w500/${poster_path}`
+    movieTitle.innerText= `${title}`
     addToListBtn.innerText = 'Add to Watchlist'
     removeListBtn.innerText = 'Remove from Watchlist'
     
@@ -83,7 +83,7 @@ function renderMovie(item){
    imgOverlay.appendChild(movieReleaseDate)
    imgOverlay.appendChild(movieRuntime)
     imgOverlay.appendChild(addToListBtn)
-    if(watchlist.includes(item.id)){
+    if(watchlist.includes(id)){
         imgOverlay.appendChild(removeListBtn)
     }
 
@@ -187,7 +187,7 @@ comingSoonFilter.addEventListener('click', () => {
 watchListOption.addEventListener('click', () => {
     moviesList.innerHTML = ''
 
-    
+
        renderWatchlist()
 })
 
