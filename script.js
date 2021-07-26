@@ -29,11 +29,8 @@ function showMovies(url){
         const data = await response.json()
         const results = data.results
        movies = []
-        // results.forEach(result => {
-        //    renderMovie(result)
-        //    movieIds.push(result.id)
-        // })
-              results.map(async(result) => {
+              
+       results.map(async(result) => {
                 const response = await fetch(`https://api.themoviedb.org/3/movie/${result.id}?api_key=${apiKey}&language=en-US`)
                 const data = await response.json()
                movies.push(data)
@@ -65,11 +62,6 @@ function renderMovie({release_date, overview, runtime, poster_path, title, id}){
     const movieRuntime = document.createElement('p')
     const movieRelease = new Date(`${release_date}`)
     
-   
-        
-    
-
-
     movieDescription.innerText = `${overview}`
     movieReleaseDate.innerText = `Released ${dateFormatter(movieRelease)}`
     movieRuntime.innerText = formatRuntime(`${runtime}`)
@@ -103,22 +95,18 @@ document.addEventListener('click', e => {
     }
 })
 
-
 document.addEventListener('click', e => {
     if(e.target.matches('[data-remove-watchlist]')){
         const id = e.target.closest('[data-movie]')
             .dataset.movieId
             
-            removeFromWatchlist(parseInt(id))
-           
+            removeFromWatchlist(parseInt(id))    
     }
-    
 })
 
-
 function addToWatchList(id){
-    
     const existingItem = watchlist.find(entry => entry === id )
+
     if(!existingItem){
         watchlist.push(id)
     }else{
@@ -139,7 +127,6 @@ form.addEventListener('submit', (e) => {
     e.preventDefault()
     const search = inputSearch.value
    
-
     if(search){
         moviesList.innerHTML = ''
         showMovies(searchAPIUrl + search )
@@ -153,7 +140,6 @@ homeLink.addEventListener('click', () => {
     showMovies(apiUrl)
     
 })
-
 
 function sortByRelease(){
     const sortedActivities = movies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
