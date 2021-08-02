@@ -254,7 +254,7 @@ form button:hover{
 .overlay .description{
     font-size: 1.5rem;
     line-height: 1.5;
-    padding: 0rem .5rem;
+    /* padding: 2rem; */
 }
 
 .overlay p{
@@ -283,13 +283,18 @@ h2{
 
 .overlay button:hover{
     background: #e51937;
-    transition: 300ms ease-in;
+    transition: 200ms ease-in;
 }
 
 @media (max-width: 767px){
     .optionsContainer .options li{
         font-size: 1.5rem
     }
+
+    .overlay .description{
+        padding: none;
+    }
+    
 }
 
 @media (max-width: 420px) {
@@ -298,8 +303,8 @@ h2{
     }
 
     .overlay .description{
-        font-size: .8rem;
-       
+        font-size: .7rem;
+       padding: none;
     }
     
     .overlay p{
@@ -308,6 +313,14 @@ h2{
     }
 
     .overlay h2{
-        font-size:1.75rem;
+        font-size:1.25rem;
     }
+    
+    .overlay button{
+        padding:.25rem .5rem ;
+        font-size: 1rem;
+        margin-bottom: .5rem;
+    }
+
+
 }
