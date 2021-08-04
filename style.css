@@ -286,7 +286,37 @@ h2{
     transition: 200ms ease-in;
 }
 
+.burger{
+    width: 3rem;
+    height: 3rem;
+    position: fixed;
+    top: 14%;
+    right: 5%;
+    z-index: 20;
+    display: none;
+}
+
+.burger div{
+    width: 3rem;
+    height: 0.5rem;
+    background-color: white;
+    border-radius: 10px;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+}
+
 @media (max-width: 767px){
+
+    .burger{
+        display: flex;
+        justify-content: space-around;
+        flex-flow: column nowrap;
+    }
+
+    .optionsContainer{
+        display: none;
+    }
+
     .optionsContainer .options li{
         font-size: 1.5rem
     }
@@ -300,6 +330,13 @@ h2{
 @media (max-width: 420px) {
     .optionsContainer .options li{
         font-size: 1rem
+    }
+
+    .moviesList div{
+        margin-bottom: 6rem;
+       
+        width: 100%;
+       
     }
 
     .overlay .description{

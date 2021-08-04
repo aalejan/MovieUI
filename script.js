@@ -16,9 +16,12 @@ const trendingMoviesFilter = document.querySelector('[data-trending]')
 const nowPlayingFilter = document.querySelector('[data-now_playing]')
 const comingSoonFilter = document.querySelector('[data-coming-soon]')
 const watchListOption = document.querySelector('[data-watchlist]')
+const Burger = document.querySelector('.burger')
 
  let movies = []
 let watchlist = []
+
+
 
 showMovies(apiUrl)
 
