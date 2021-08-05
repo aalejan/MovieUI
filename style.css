@@ -363,7 +363,7 @@ h2{
         width: 300px;
         padding-top: 3.5rem;
         transition: transform 0.3s ease-in-out;
-       
+       justify-content:space-evenly;
     }
 
     .optionsContainer .options li{
