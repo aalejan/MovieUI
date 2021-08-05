@@ -345,6 +345,8 @@ h2{
 
 @media (max-width: 767px){
 
+   
+
     .burger{
         display: flex;
         justify-content: space-around;
