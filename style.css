@@ -329,6 +329,13 @@ h2{
     transform: rotate(-45deg);
 }
 
+.open-menu{
+    transform:translateX(0);
+}
+.close-menu{
+    transform:translateX(100%);
+}
+
 @media (max-width: 767px){
 
     .burger{
@@ -337,8 +344,20 @@ h2{
         flex-flow: column nowrap;
     }
 
-    .optionsContainer{
-        display: none;
+    .optionsContainer .options{
+display: flex;
+flex-flow: row nowrap;
+z-index:2;
+flex-flow: column nowrap;
+background-color: #112443;
+position: fixed;
+top: 0;
+right: 0;
+height: 100vh;
+width: 300px;
+padding-top: 3.5rem;
+transition: transform 0.3s ease-in-out;
+transform: translateX();
     }
 
     .optionsContainer .options li{
