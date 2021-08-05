@@ -19,6 +19,7 @@ const watchListOption = document.querySelector('[data-watchlist]')
 const Burger = document.querySelector('.burger')
 const BurgerMenu = document.querySelector('.options')
 
+
 let movies = []
 let watchlist = []
 let burgerOpen = false
@@ -195,6 +196,7 @@ function renderWatchlist(){
 }  
 
 BurgerMenu.classList.add('inactive-menu')
+Burger.classList.add('burger-absolute')
 function toggleMenu(){
 
 
@@ -202,15 +204,20 @@ function toggleMenu(){
         burgerOpen = !burgerOpen 
         Burger.classList.remove('open')
          Burger.classList.add('close')
+         Burger.classList.remove('burger-absolute')
+         Burger.classList.add('burger-fixed')
          BurgerMenu.classList.add('inactive-menu')
           BurgerMenu.classList.add('active-menu')
+          document.body.style.overflow = 'auto'
          
     }else{
         burgerOpen = !burgerOpen
         Burger.classList.remove('close')
          Burger.classList.add('open')
+         Burger.classList.remove('burger-absolute')
         BurgerMenu.classList.remove('active-menu')
         BurgerMenu.classList.remove('inactive-menu')
+        document.body.style.overflow = 'hidden';
     }
 
     console.log(burgerOpen)

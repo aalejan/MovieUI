@@ -11,6 +11,7 @@ body{
     flex-direction: column;
     background-color: black;
     color: white;
+    
 }
 
 
@@ -289,13 +290,15 @@ h2{
 .burger{
     width: 3rem;
     height: 3rem;
-    position: fixed;
+    position: absolute;
     top: 14%;
     right: 5%;
     z-index: 20;
     display: none;
     cursor: pointer;
 }
+
+
 
 .burger div{
     width: 3rem;
@@ -349,7 +352,6 @@ h2{
     }
 
     .optionsContainer .options{
-       
         flex-flow: row nowrap;
         z-index:2;
         flex-flow: column nowrap;
@@ -365,7 +367,8 @@ h2{
     }
 
     .optionsContainer .options li{
-        font-size: 1.5rem
+        font-size: 2rem;
+        padding-left: 2rem;
     }
 
     .overlay .description{
@@ -376,7 +379,7 @@ h2{
 
 @media (max-width: 420px) {
     .optionsContainer .options li{
-        font-size: 1rem
+        font-size: 3rem
     }
 
     .moviesList div{
