@@ -337,15 +337,15 @@ h2{
     display: flex;
 }
 
-.inactive-menu{
-   display: none;
-    transform:translateX(100%);
-}
+
 
 
 @media (max-width: 767px){
 
-   
+    .inactive-menu{
+        display: none;
+         transform:translateX(100%);
+     }
 
     .burger{
         display: flex;
