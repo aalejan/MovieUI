@@ -294,6 +294,7 @@ h2{
     right: 5%;
     z-index: 20;
     display: none;
+    cursor: pointer;
 }
 
 .burger div{
@@ -303,6 +304,29 @@ h2{
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
+}
+
+.close div:nth-child(1){
+    transform: rotate(0);
+}
+.close div:nth-child(2){
+    transform: translateX(0);
+    opacity: 1;
+}
+.close div:nth-child(3){
+    transform: rotate(0);
+}
+
+
+.open div:nth-child(1){
+    transform: rotate(45deg);
+}
+.open div:nth-child(2){
+    transform: translateX(100%);
+    opacity: 0;
+}
+.open div:nth-child(3){
+    transform: rotate(-45deg);
 }
 
 @media (max-width: 767px){

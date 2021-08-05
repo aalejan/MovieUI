@@ -18,9 +18,11 @@ const comingSoonFilter = document.querySelector('[data-coming-soon]')
 const watchListOption = document.querySelector('[data-watchlist]')
 const Burger = document.querySelector('.burger')
 
- let movies = []
+let movies = []
 let watchlist = []
+let burgerOpen = false
 
+Burger.addEventListener('click', toggleMenu)
 
 
 showMovies(apiUrl)
@@ -190,5 +192,19 @@ function renderWatchlist(){
    console.log()
  })  
 }  
+
+function toggleMenu(){
+    if (burgerOpen){
+        burgerOpen = !burgerOpen 
+        Burger.classList.remove('open')
+         Burger.classList.add('close')
+    }else{
+        burgerOpen = !burgerOpen
+        Burger.classList.remove('close')
+         Burger.classList.add('open')
+    }
+
+    console.log(burgerOpen)
+}
 
 
