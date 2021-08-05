@@ -17,6 +17,7 @@ const nowPlayingFilter = document.querySelector('[data-now_playing]')
 const comingSoonFilter = document.querySelector('[data-coming-soon]')
 const watchListOption = document.querySelector('[data-watchlist]')
 const Burger = document.querySelector('.burger')
+const BurgerMenu = document.querySelector('.options')
 
 let movies = []
 let watchlist = []
@@ -193,15 +194,23 @@ function renderWatchlist(){
  })  
 }  
 
+BurgerMenu.classList.add('inactive-menu')
 function toggleMenu(){
+
+
     if (burgerOpen){
         burgerOpen = !burgerOpen 
         Burger.classList.remove('open')
          Burger.classList.add('close')
+         BurgerMenu.classList.add('inactive-menu')
+          BurgerMenu.classList.add('active-menu')
+         
     }else{
         burgerOpen = !burgerOpen
         Burger.classList.remove('close')
          Burger.classList.add('open')
+        BurgerMenu.classList.remove('active-menu')
+        BurgerMenu.classList.remove('inactive-menu')
     }
 
     console.log(burgerOpen)
